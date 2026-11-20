@@ -16,6 +16,14 @@ app.get('/api/menu', (req, res) => {
   return res.json(menu);
 });
 
+app.get('/api/menu', (req, res) => {
+  const veg = req.query.veg;
+  if (veg === false) {
+    return res.json(menu.filter((dish) => dish.isVeg));
+  }
+  return res.json(menu);
+});
+
 app.get('/api/orders', (req, res) => {
   return res.json(orders);
 });
